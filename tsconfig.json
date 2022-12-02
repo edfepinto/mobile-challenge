@@ -6,7 +6,8 @@
     "baseUrl": "./",
     "rootDir": "./",
     "paths": {
-      "~/shared/*": ["src/shared/*"]
+      "~/shared/*": ["src/shared/*"],
+      "~/infra/*": ["src/infra/*"]
     }
   }
 }
