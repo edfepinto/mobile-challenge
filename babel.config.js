@@ -12,7 +12,8 @@ module.exports = function (api) {
           alias: {
             "~/shared": "./src/shared",
             "~/infra": "./src/infra",
-            "~/domain": "./src/domain"
+            "~/domain": "./src/domain",
+            "~/main": "./src/main"
           },
         },
       ],
