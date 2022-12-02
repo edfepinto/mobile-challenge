@@ -21,3 +21,18 @@ alias: {
   "~/shared": "./src/shared",
 },
 ----
+
+=== Building the application for Android OS
+. Ensure that you're authenticated. If not, do it through **expo login**
+[%linenums,bash]
+----
+yarn expo whoami
+----
+
+. Run the build command with Expo Application Services (EAS) CLI and select the **apk** option.
+[%linenums,bash]
+----
+yarn eas build --platform android --profile preview
+----
+You just have to follow the wizard. If some of these informations are requested, use this values:
+* Android application id: com.mobile_challenge
