@@ -35,4 +35,5 @@ yarn expo whoami
 yarn eas build --platform android --profile preview
 ----
 You just have to follow the wizard. If some of these informations are requested, use this values:
+
 * Android application id: com.mobile_challenge
