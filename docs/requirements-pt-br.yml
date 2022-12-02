@@ -1,0 +1,33 @@
+Eventos:
+  - Requisitos funcionais:
+      - Criação de evento
+        Ver detalhes de um evento
+        Compartilhar evento
+        Buscar eventos permitindo filtro por categoria
+  - Regras de negócio:
+      - Um evento deve conter as seguintes propriedades:
+          - título
+            descrição
+            banner
+            seções extras
+            organizador
+            categoria
+            data e horário
+            local (presencial/online/híbrido)
+            limite de usuários
+            cronograma
+
+Ingressos:
+  - Requisitos funcionais:
+      - Compra de ingresso
+        Ver todos os ingressos comprados
+  - Regras de negócio:
+      - Não deve ser possível comprar um ingresso se estes já estiverem esgotados
+        A compra do ingresso deve ser persistida no banco
+
+Requisitos não funcionais:
+  - Utilizar um banco de dados offline
+    Abordagem offline first
+    Utilizar algum tipo de teste
+    Utilizar alguma biblioteca css-in-js
+    Criar funcionalidade e aba de favoritos
