@@ -3,6 +3,7 @@ import { Text, View, FlatList } from "react-native";
 import { Card } from "~/main/components/card.component";
 
 export function Carousel({ data, category }) {
+  const [modalVisibility, setModalVisibility] = React.useState<boolean>();
   const [layout, setLayout] = React.useState({
     width: 0,
     height: 0,
@@ -10,13 +11,16 @@ export function Carousel({ data, category }) {
 
   return (
     <>
+      {/* <Modal visible={modalVisibility} animationType={"fade"}> */}
+      {/* </Modal> */}
+
       <Text
         style={{
           fontSize: 24,
           fontWeight: "bold",
           alignSelf: "flex-start",
           paddingLeft: 8,
-          marginBottom: 10
+          marginBottom: 10,
         }}
       >
         {category}

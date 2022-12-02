@@ -25,6 +25,9 @@ export function Card({ data, width, isLastItem }: CardProps) {
         width: width * 0.45,
         justifyContent: "flex-start",
       }}
+      onTouchStart={() => {
+        // logic to open modal with card detailed
+      }}
     >
       <Image
         source={{ uri: data.banner }}

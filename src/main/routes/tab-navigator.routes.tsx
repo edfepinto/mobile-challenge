@@ -41,17 +41,17 @@ export function TabNavigator() {
             );
           }
 
-          if (route.name === screensName.favorites) {
-            return focused ? (
-              <MaterialIcons name="favorite" size={size} color={color} />
-            ) : (
-              <MaterialIcons
-                name="favorite-outline"
-                size={size}
-                color={color}
-              />
-            );
-          }
+          // if (route.name === screensName.favorites) {
+          //   return focused ? (
+          //     <MaterialIcons name="favorite" size={size} color={color} />
+          //   ) : (
+          //     <MaterialIcons
+          //       name="favorite-outline"
+          //       size={size}
+          //       color={color}
+          //     />
+          //   );
+          // }
         },
         tabBarActiveTintColor: "black",
         tabBarInactiveTintColor: "black",
@@ -67,11 +67,11 @@ export function TabNavigator() {
         options={{ title: t("Tickets"), headerShown: false  }}
         component={TicketsScreen}
       />
-      <Tab.Screen
-        name={screensName.favorites}
-        options={{ title: t("Favorites"), headerShown: false  }}
-        component={FavoritesScreen}
-      />
+      {/* <Tab.Screen */}
+      {/*   name={screensName.favorites} */}
+      {/*   options={{ title: t("Favorites"), headerShown: false  }} */}
+      {/*   component={FavoritesScreen} */}
+      {/* /> */}
     </Tab.Navigator>
   );
 }
