@@ -1,4 +1,4 @@
-import { Theme } from "~/shared/styles/themes/theme.interface";
+import { Theme } from "~/main/styles/themes/theme.interface";
 
 export const lightTheme: Theme = {
   statusBar: {
