@@ -1,0 +1,23 @@
+= Mobile Challenge
+:source-highlighter: rouge
+
+== Development
+=== Path Mapping
+The actual setup of path mapping is made through Typescript and Babel, when setting up a mapping is needed to made the config in the two respective files.
+Beside that it's important to notice that both config files have different syntax, e.g. 
+
+* In **tsconfig.json**, the alias are written with glob patterns, so you have to add **/&#42;** in the end of folders path to resolve all subdirectories
+[%linenums,json]
+----
+"paths": {
+  "~/shared/*": ["./src/shared/*"]
+}
+----
+
+* In **babel.config.js** you don't need the explicit glob patterns, then the equivalent of **tsconfig** is
+[%linenums,json]
+----
+alias: {
+  "~/shared": "./src/shared",
+},
+----
