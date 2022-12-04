@@ -13,7 +13,8 @@ module.exports = function (api) {
             "~/shared": "./src/shared",
             "~/infra": "./src/infra",
             "~/domain": "./src/domain",
-            "~/main": "./src/main"
+            "~/main": "./src/main",
+            "~/assets": "./assets"
           },
         },
       ],
