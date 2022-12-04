@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Text, View, FlatList } from "react-native";
-import { Card } from "~/main/components/card.component";
+import { Card } from "~/main/components/card/card.component";
 
 export function Carousel({ data, category }) {
   const [modalVisibility, setModalVisibility] = React.useState<boolean>();
@@ -10,16 +10,12 @@ export function Carousel({ data, category }) {
   });
 
   return (
-    <>
-      {/* <Modal visible={modalVisibility} animationType={"fade"}> */}
-      {/* </Modal> */}
-
+    <View style={{ marginBottom: 10 }}>
       <Text
         style={{
           fontSize: 24,
           fontWeight: "bold",
           alignSelf: "flex-start",
-          paddingLeft: 8,
           marginBottom: 10,
         }}
       >
@@ -29,7 +25,8 @@ export function Carousel({ data, category }) {
         style={{
           flexDirection: "row",
           justifyContent: "center",
-          height: "40%",
+          flex: 1,
+          height: 230,
         }}
         onLayout={(event) => setLayout(event.nativeEvent.layout)}
       >
@@ -43,11 +40,17 @@ export function Carousel({ data, category }) {
           renderItem={({ item, index }) => {
             const isLastItem = index + 1 === data.length;
             return (
-              <Card data={item} isLastItem={isLastItem} width={layout.width} />
+              <Card
+                date={item.date}
+                local={item.local}
+                title={item.title}
+                banner={item.banner}
+                isLastItem={isLastItem}
+              />
             );
           }}
         />
       </View>
-    </>
+    </View>
   );
 }
