@@ -1,7 +1,7 @@
 import { ThemeProvider } from "styled-components/native";
 import { registerRootComponent } from "expo";
 import { StatusBar } from "expo-status-bar";
-import { Router } from "~/main/routes/router";
+import { Router } from "~/main/routes/main-router";
 import { lightTheme } from "~/main/styles/themes/light";
 import {
   SafeAreaView,

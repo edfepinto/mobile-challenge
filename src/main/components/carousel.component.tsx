@@ -1,13 +1,11 @@
+import { useNavigation } from "@react-navigation/native";
 import * as React from "react";
 import { Text, View, FlatList } from "react-native";
 import { Card } from "~/main/components/card/card.component";
+import { screensName } from "~/shared/constants/screens-name.const";
 
 export function Carousel({ data, category }) {
-  const [modalVisibility, setModalVisibility] = React.useState<boolean>();
-  const [layout, setLayout] = React.useState({
-    width: 0,
-    height: 0,
-  });
+  const navigation = useNavigation<any>();
 
   return (
     <View style={{ marginBottom: 10 }}>
@@ -28,7 +26,6 @@ export function Carousel({ data, category }) {
           flex: 1,
           height: 230,
         }}
-        onLayout={(event) => setLayout(event.nativeEvent.layout)}
       >
         <FlatList
           keyExtractor={(item) => item.title}
@@ -46,6 +43,11 @@ export function Carousel({ data, category }) {
                 title={item.title}
                 banner={item.banner}
                 isLastItem={isLastItem}
+                onPress={() =>
+                  navigation.navigate(screensName.homeInternalRoutes, {
+                    screen: item.title,
+                  })
+                }
               />
             );
           }}

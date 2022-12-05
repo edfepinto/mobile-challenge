@@ -1,5 +1,8 @@
+// Warning: Should be used only for routing purpose, never for visual reasons like translation
+
 export const screensName = {
-  home: "Home",
-  tickets: "Tickets",
-  favorites: "Favorites"
+  home: "home",
+  homeInternalRoutes: "aoba",
+  tickets: "tickets",
+  favorites: "favorites",
 }

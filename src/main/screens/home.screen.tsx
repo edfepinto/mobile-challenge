@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, Text, ScrollView } from "react-native";
+import { ScrollView } from "react-native";
 import { Carousel } from "~/main/components/carousel.component";
 import data from "~/assets/api.json";
 
