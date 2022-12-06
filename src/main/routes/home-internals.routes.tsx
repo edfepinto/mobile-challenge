@@ -1,8 +1,8 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { View, Text } from "react-native";
 import { screensName } from "~/shared/constants/screens-name.const";
 import data from "~/assets/api.json";
 import { HomeScreen } from "~/main/screens/home.screen";
+import { cardDetailsComponentFactory } from "~/main/components/card-details/card-details.component-factory";
 
 const Stack = createNativeStackNavigator();
 
@@ -21,19 +21,17 @@ export function HomeInternalsRoutes() {
         <Stack.Screen
           key={index}
           name={card.title}
-          component={Something(card.title)}
+          component={cardDetailsComponentFactory({
+            title: card.title,
+            description: card.description,
+            date: card.date,
+            local: card.local,
+            banner: card.banner,
+            organizer: card.organizer,
+            ticketsLimit: card.ticketsLimit,
+          })}
         />
       ))}
     </Stack.Navigator>
   );
-}
-
-function Something(text: string) {
-  return () => {
-    return (
-      <View>
-        <Text>{text}</Text>
-      </View>
-    );
-  };
 }
