@@ -8,8 +8,15 @@ import {
   Platform,
   StatusBar as statusBarConfig,
 } from "react-native";
+import { useEffect } from "react";
+import { startupController } from "~/main/controllers/startup.controller";
+import { GlobalStateProvider } from "~/main/context/global-state.context";
 
 function App() {
+  useEffect(() => {
+    startupController.populateEventsWithMock();
+  }, []);
+
   return (
     <SafeAreaView
       style={{
@@ -18,13 +25,15 @@ function App() {
           Platform.OS === "android" ? statusBarConfig.currentHeight : 0,
       }}
     >
-      <ThemeProvider theme={lightTheme}>
-        <StatusBar
-          backgroundColor={lightTheme.statusBar.backgroundColor}
-          style={lightTheme.statusBar.style}
-        />
-        <Router />
-      </ThemeProvider>
+      <GlobalStateProvider>
+        <ThemeProvider theme={lightTheme}>
+          <StatusBar
+            backgroundColor={lightTheme.statusBar.backgroundColor}
+            style={lightTheme.statusBar.style}
+          />
+          <Router />
+        </ThemeProvider>
+      </GlobalStateProvider>
     </SafeAreaView>
   );
 }
