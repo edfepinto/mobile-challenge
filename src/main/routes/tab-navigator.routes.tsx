@@ -6,7 +6,6 @@ import {
 import { screensName } from "~/shared/constants/screens-name.const";
 import { t } from "~/shared/intl/translator";
 import { TicketsScreen } from "~/main/screens/tickets.screen";
-import { FavoritesScreen } from "~/main/screens/favorites.screen";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { HomeInternalsRoutes } from "./home-internals.routes";
 
@@ -40,18 +39,6 @@ export function TabNavigator() {
               <Ionicons name="home-outline" size={size} color={color} />
             );
           }
-
-          if (route.name === screensName.favorites) {
-            return focused ? (
-              <MaterialIcons name="favorite" size={size} color={color} />
-            ) : (
-              <MaterialIcons
-                name="favorite-outline"
-                size={size}
-                color={color}
-              />
-            );
-          }
         },
         tabBarActiveTintColor: "black",
         tabBarInactiveTintColor: "black",
@@ -68,12 +55,6 @@ export function TabNavigator() {
         name={screensName.tickets}
         options={{ title: t("Tickets"), headerShown: false  }}
         component={TicketsScreen}
-      />
-
-      <Tab.Screen
-        name={screensName.favorites}
-        options={{ title: t("Favorites"), headerShown: false  }}
-        component={FavoritesScreen}
       />
     </Tab.Navigator>
   );
