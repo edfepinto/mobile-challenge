@@ -1,17 +1,24 @@
 import React, { createContext, useContext, useState } from "react";
+import { TicketEntityBody } from "~/domain/entities/ticket.entity";
 
-interface GlobalStateAttributes {}
+interface GlobalStateAttributes {
+  tickets: TicketEntityBody[];
+}
 
 interface IGlobalStateContext {
   globalState: GlobalStateAttributes;
   setGlobalState: React.Dispatch<React.SetStateAction<GlobalStateAttributes>>;
 }
 
+const defaultGlobalStateValue: GlobalStateAttributes = {
+  tickets: [],
+};
+
 const GlobalStateContext = createContext({} as IGlobalStateContext);
 
 function GlobalStateProvider({ children }) {
   const [globalState, setGlobalState] = useState<GlobalStateAttributes>(
-    {} as GlobalStateAttributes
+    defaultGlobalStateValue
   );
 
   return (
