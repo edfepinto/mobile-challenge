@@ -1,36 +1,25 @@
 import React, { createContext, useContext, useState } from "react";
 
-interface CardSelected {
-  title: string;
-  description: string;
-  date: string;
-  local: string;
-  ticketLimit: number;
-  organizer: string;
-  category: string;
-  banner: string;
-}
+interface GlobalStateAttributes {}
 
 interface IGlobalStateContext {
-  state: CardSelected;
-  setState: React.Dispatch<React.SetStateAction<CardSelected>>;
+  globalState: GlobalStateAttributes;
+  setGlobalState: React.Dispatch<React.SetStateAction<GlobalStateAttributes>>;
 }
 
 const GlobalStateContext = createContext({} as IGlobalStateContext);
 
 function GlobalStateProvider({ children }) {
-  const [globalState, setGlobalState] = useState<CardSelected>(
-    {} as CardSelected
+  const [globalState, setGlobalState] = useState<GlobalStateAttributes>(
+    {} as GlobalStateAttributes
   );
 
   return (
-    <GlobalStateContext.Provider
-      value={{ state: globalState, setState: setGlobalState }}
-    >
+    <GlobalStateContext.Provider value={{ globalState, setGlobalState }}>
       {children}
     </GlobalStateContext.Provider>
   );
-};
+}
 
 const useGlobalState = () => {
   const context = useContext(GlobalStateContext);
@@ -39,10 +28,9 @@ const useGlobalState = () => {
     throw new Error("useGlobalState must be used within a GlobalStateProvider");
   }
 
-  const { state, setState } = context;
+  const { globalState, setGlobalState } = context;
 
-  return { globalState: state, setGlobalState: setState };
+  return { globalState, setGlobalState };
 };
 
 export { GlobalStateProvider, useGlobalState };
-
