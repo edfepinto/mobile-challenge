@@ -8,9 +8,7 @@ export const Title = styled.Text`
   margin-bottom: 10px;
 `;
 
-export const QuickInfo = styled.View`
-
-`;
+export const QuickInfo = styled.View``;
 
 export const Description = styled.Text`
   text-align: justify;
@@ -36,11 +34,11 @@ export const SectionBody = styled.View`
   padding: 10px 15px;
 `;
 
-export const TicketsLimit = styled.Text``;
+export const TicketsLimit = styled.Text`
+  font-weight: bold;
+`;
 
-export const Time = styled.Text``;
-
-export const Local = styled.Text``;
+export const GenericText = styled.Text``;
 
 export const Name = styled.Text`
   font-size: 18px;

@@ -6,9 +6,6 @@ import {
   Description,
   Organizer,
   Section,
-  TicketsLimit,
-  Time,
-  Local,
   Name,
   Banner,
   SectionBody,
@@ -17,13 +14,17 @@ import {
   SectionTitle,
   Avatar,
   FloatingButtonWrapper,
-  FloatingButtonOffset
+  FloatingButtonOffset,
+  GenericText,
 } from "./card-details.styles";
 import { t } from "~/shared/intl/translator";
+import { useState } from "react";
+import { BuyButton } from "../buy-button/buy-button.component";
+import ticketsInMemoryRepository from "~/main/repositories/tickets/tickets-in-memory.repository";
+import { useGlobalState } from "~/main/context/global-state.context";
 
 // UPDATE ME: This package has problem in his types currently, when possible, add it as dev-dependency
 import { AntDesign, Entypo } from "react-native-vector-icons";
-import { BuyButton } from "../buy-button/buy-button.component";
 
 export function CardDetails({
   title,
@@ -32,8 +33,25 @@ export function CardDetails({
   local,
   banner,
   organizer,
-  ticketsLimit,
 }: CardDetailsProps) {
+  const [isLoading, setIsLoading] = useState(false);
+  const { setGlobalState } = useGlobalState();
+
+  function handlePurchase() {
+    setIsLoading(true);
+    setTimeout(() => {
+      const ticket = { title, banner, date, local };
+
+      ticketsInMemoryRepository.save(ticket);
+      setGlobalState((prevValue) => ({
+        ...prevValue,
+        tickets: [...prevValue.tickets, ticket],
+      }));
+
+      setIsLoading(false);
+    }, 1000);
+  }
+
   return (
     <FloatingButtonWrapper>
       <Container>
@@ -46,22 +64,13 @@ export function CardDetails({
                 <Icon>
                   <Entypo name="location-pin" size={24} color="black" />
                 </Icon>
-                <Local>{local}</Local>
+                <GenericText>{local}</GenericText>
               </Row>
               <Row>
                 <Icon>
                   <AntDesign name="clockcircle" size={18} color="black" />
                 </Icon>
-                <Time>{date}</Time>
-              </Row>
-              <Row>
-                <Icon>
-                  <Entypo name="ticket" size={24} color="black" />
-                </Icon>
-                <TicketsLimit>
-                  {t("Tickets available: ")}
-                  {ticketsLimit}
-                </TicketsLimit>
+                <GenericText>{date}</GenericText>
               </Row>
             </QuickInfo>
           </SectionBody>
@@ -86,7 +95,11 @@ export function CardDetails({
       </Container>
 
       <FloatingButtonOffset style={{ height: 100 }} />
-      <BuyButton title={t("Purchase")} isLoading={false} />
+      <BuyButton
+        title={t("Purchase")}
+        isLoading={isLoading}
+        onPress={handlePurchase}
+      />
     </FloatingButtonWrapper>
   );
 }
