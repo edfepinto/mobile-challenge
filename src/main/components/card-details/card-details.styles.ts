@@ -71,3 +71,9 @@ export const Avatar = styled.View`
   padding: 5px;
   margin-bottom: 10px;
 `;
+
+export const FloatingButtonWrapper = styled.View`
+  flex: 1;
+`;
+
+export const FloatingButtonOffset = styled.View``;
