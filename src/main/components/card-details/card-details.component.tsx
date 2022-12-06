@@ -22,6 +22,7 @@ import { useState } from "react";
 import { BuyButton } from "../buy-button/buy-button.component";
 import ticketsInMemoryRepository from "~/main/repositories/tickets/tickets-in-memory.repository";
 import { useGlobalState } from "~/main/context/global-state.context";
+import Toast from "react-native-toast-message";
 
 // UPDATE ME: This package has problem in his types currently, when possible, add it as dev-dependency
 import { AntDesign, Entypo } from "react-native-vector-icons";
@@ -49,6 +50,10 @@ export function CardDetails({
       }));
 
       setIsLoading(false);
+      Toast.show({
+        type: "success",
+        text1: t("Successful purchase"),
+      });
     }, 1000);
   }
 

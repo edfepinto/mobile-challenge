@@ -11,6 +11,7 @@ import {
 import { useEffect } from "react";
 import { startupController } from "~/main/controllers/startup.controller";
 import { GlobalStateProvider } from "~/main/context/global-state.context";
+import Toast from "react-native-toast-message";
 
 function App() {
   useEffect(() => {
@@ -18,23 +19,27 @@ function App() {
   }, []);
 
   return (
-    <SafeAreaView
-      style={{
-        flex: 1,
-        paddingTop:
-          Platform.OS === "android" ? statusBarConfig.currentHeight : 0,
-      }}
-    >
-      <GlobalStateProvider>
-        <ThemeProvider theme={lightTheme}>
-          <StatusBar
-            backgroundColor={lightTheme.statusBar.backgroundColor}
-            style={lightTheme.statusBar.style}
-          />
-          <Router />
-        </ThemeProvider>
-      </GlobalStateProvider>
-    </SafeAreaView>
+    <>
+      <SafeAreaView
+        style={{
+          flex: 1,
+          paddingTop:
+            Platform.OS === "android" ? statusBarConfig.currentHeight : 0,
+        }}
+      >
+        <GlobalStateProvider>
+          <ThemeProvider theme={lightTheme}>
+            <StatusBar
+              backgroundColor={lightTheme.statusBar.backgroundColor}
+              style={lightTheme.statusBar.style}
+            />
+            <Router />
+          </ThemeProvider>
+        </GlobalStateProvider>
+      </SafeAreaView>
+
+      <Toast />
+    </>
   );
 }
 
