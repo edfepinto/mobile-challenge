@@ -1,7 +1,6 @@
 import {
   MaterialCommunityIcons,
   Ionicons,
-  MaterialIcons,
 } from "@expo/vector-icons";
 import { screensName } from "~/shared/constants/screens-name.const";
 import { t } from "~/shared/intl/translator";
